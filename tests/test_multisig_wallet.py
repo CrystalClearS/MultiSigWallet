@@ -77,7 +77,7 @@ class TestContract(TestCase):
         # Only a wallet owner (in this case wa_1) can do this. Owner confirms transaction at the same time.
         transaction_id = self.multisig_wallet.submitTransaction(self.multisig_wallet.address, 0, add_owner_data,
                                                                 sender=keys[wa_1])
-        # There is one pending transaction
+        # There is one pending transaction 
         exclude_pending = False
         include_pending = True
         exclude_executed = False
@@ -132,7 +132,7 @@ class TestContract(TestCase):
         self.assertEqual(
             self.multisig_wallet.getTransactionIds(0, 2, exclude_pending, include_executed),
             [transaction_id, transaction_id_2])
-        # Delete owner wa_3. All parties have to confirm.
+        # Delete owner wa_3. All parties have to confirm of order
         remove_owner_data = multisig_abi.encode('removeOwner', [accounts[wa_3]])
         transaction_id_3 = self.multisig_wallet.submitTransaction(self.multisig_wallet.address, 0, remove_owner_data,
                                                                   sender=keys[wa_1])
